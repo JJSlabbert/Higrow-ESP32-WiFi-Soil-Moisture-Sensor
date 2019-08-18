@@ -50,7 +50,7 @@ void handleRoot() {
   <body>\
     <h1>WEMOS HIGROW ESP32 WIFI SOIL MOISTURE SENSOR</h1>\   
     <br>\
-    <p>Code from https://www.espressif.com/ was modified by JJ Slabbert to read the Soil Moisture and publish it to an internal (local) web on the ESP32 itself. This code does not publish to any cloud service.</p>\
+    <p>Developed by JJ Slabbert to read the Soil Moisture Sensor and publish the results it to an internal (local) web server on the ESP32 itself. This code does not publish to any cloud service.</p>\
     <p>For soil moist, high values (range of +/-3344) means dry soil, lower values (+/- 2000) means wet soil. The Soil Moist Reading is influenced by the volumetric soil moisture content and electrical capacitive properties of the soil.</p>\
     <br>\
     <p>Date/Time: <span id='datetime'></span></p><script>var dt = new Date();document.getElementById('datetime').innerHTML = (('0'+dt.getDate()).slice(-2)) +'.'+ (('0'+(dt.getMonth()+1)).slice(-2)) +'.'+ (dt.getFullYear()) +' '+ (('0'+dt.getHours()).slice(-2)) +':'+ (('0'+dt.getMinutes()).slice(-2));</script>\
