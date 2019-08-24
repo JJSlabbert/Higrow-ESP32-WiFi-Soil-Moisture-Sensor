@@ -5,3 +5,5 @@ Esp32_SoilMoisture_WebServer_DataLog.ino requires an micro sd card and continues
 Esp32_SoilMoisture_WebServer_DataLog_Int_RTC.ino requires an micro sd card and internet access to the NTP server after reset. It uses the internal RTC of the ESP32 to update the date/time received at reset from the NTP server. This is the most power efficient solution, but the time may not be as accurate.
 
 Full build instructions on https://www.instructables.com/id/ESP32-WiFi-SOIL-MOISTURE-SENSOR/
+
+I am a hobbyist, not a ingineer or programmer. The code is nothing but efficient. Feel free to improve.
