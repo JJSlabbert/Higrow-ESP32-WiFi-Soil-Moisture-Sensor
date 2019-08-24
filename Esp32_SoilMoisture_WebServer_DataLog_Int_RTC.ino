@@ -42,6 +42,7 @@ float temp = dht.readTemperature();
 
 //Other things
 float asoilmoist=analogRead(32);//global variable to store exponential smoothed soil moisture reading
+float gwc=exp(-0.0015*asoilmoist + 0.7072); //global variablr to store the gravimetric soil water content
 
 // NTP (Network Time Protocol  : See The SimpleTime Example
 #include "time.h"
@@ -71,7 +72,8 @@ void handleRoot() {
     <br>\
     <p>Date/Time: <span id='datetime'></span></p><script>var dt = new Date();document.getElementById('datetime').innerHTML = (('0'+dt.getDate()).slice(-2)) +'.'+ (('0'+(dt.getMonth()+1)).slice(-2)) +'.'+ (dt.getFullYear()) +' '+ (('0'+dt.getHours()).slice(-2)) +':'+ (('0'+dt.getMinutes()).slice(-2));</script>\
     <br>\
-    <p>Soil Moisture: "+String(asoilmoist)+"</p>\
+    <p>Soil Moisture, Sensor Value: "+String(asoilmoist)+"</p>\
+    <p>Soil Moisture, gravimetric soil water content (WaterMass/DrySoilMass): "+String(gwc)+"</p>\
     <p>Temperature: "   +String(temp)+" &#176;C</p>\
     <p>Humidity: "   +String(hum)+" %</p>\
     <p><a href='datalog.txt'>DataLog</a> (This download is not working yet. Check the root folder of the Micro SD Card)</p>\
@@ -158,6 +160,7 @@ void loop(void)
     if (i==n)
       {        
         asoilmoist=0.95*asoilmoist+0.05*analogRead(32);//exponential smoothing of soil moisture
+        gwc=exp(-0.0015*asoilmoist + 0.7072);        
         hum = dht.readHumidity();
         temp = dht.readTemperature();
 
@@ -167,7 +170,7 @@ void loop(void)
         strftime(timeStringBuff, sizeof(timeStringBuff), "%A, %B %d %Y %H:%M:%S", &timeinfo);
           
         File dataFile = SD.open("/datalog.txt", FILE_APPEND);
-        String dataString=String(asoilmoist)+", "+String(temp)+", "+String(hum)+", "+timeStringBuff;
+        String dataString=String(asoilmoist)+", "+String(gwc)+", "+String(temp)+", "+String(hum)+", "+timeStringBuff;
         // if the file is available, write to it:
         if (dataFile) {
           dataFile.println(dataString);
@@ -186,6 +189,7 @@ void loop(void)
       else
       {
         asoilmoist=0.95*asoilmoist+0.05*analogRead(32);//exponential smoothing of soil moisture
+        gwc=exp(-0.0015*asoilmoist + 0.7072);
         hum = dht.readHumidity();
         temp = dht.readTemperature();
         server.handleClient();
