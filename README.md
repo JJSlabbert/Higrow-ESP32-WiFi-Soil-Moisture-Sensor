@@ -7,6 +7,3 @@ Esp32_SoilMoisture_WebServer_DataLog_Int_RTC.ino requires an micro sd card and i
 Full build instructions on https://www.instructables.com/id/ESP32-WiFi-SOIL-MOISTURE-SENSOR/
 
 I am a hobbyist, not a ingineer or programmer. The code is nothing but efficient. Feel free to improve.
-
-I am repurposing this sensor as a siphoning rain gauge. The code and building instructions will soon follow.
-https://youtu.be/N8aYW2bDOl4
